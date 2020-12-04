@@ -100,3 +100,56 @@ def ridge_operators():  # Ridge operators meijering, sato, frangi, hessian
 
 	plt.tight_layout()
 	plt.show()
+
+
+def edge_operators(image):
+	image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+	edge_roberts = filters.roberts(image)
+	edge_sobel = filters.sobel(image)
+
+	fig, axes = plt.subplots(ncols=2, sharex=True, sharey=True,
+							figsize=(8, 4))
+
+	axes[0].imshow(edge_roberts, cmap=plt.cm.gray)
+	axes[0].set_title('Roberts Edge Detection')
+
+	axes[1].imshow(edge_sobel, cmap=plt.cm.gray)
+	axes[1].set_title('Sobel Edge Detection')
+
+	for ax in axes:
+		ax.axis('off')
+
+	plt.tight_layout()
+	plt.show()
+
+
+def laplace(image):
+	image=filters.laplace(image, ksize=3, mask=None)
+	print(image)
+	show_image(image)
+
+
+def multi_otsu(image):
+	image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+	# Applying multi-Otsu threshold for the default value, generating
+	# three classes.
+	thresholds = filters.threshold_multiotsu(image)
+
+	# Using the threshold values, we generate the three regions.
+	regions = np.digitize(image, bins=thresholds)
+
+	fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(10, 3.5))
+
+	# Plotting the original image.
+	ax[0].imshow(image, cmap='gray')
+	ax[0].set_title('Original')
+	ax[0].axis('off')
+
+	# Plotting the Multi Otsu result.
+	ax[1].imshow(regions, cmap='jet')
+	ax[1].set_title('Multi-Otsu result')
+	ax[1].axis('off')
+
+	plt.subplots_adjust()
+
+	plt.show()

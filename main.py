@@ -23,9 +23,16 @@ btn = Button(root, text="Select an image", command=select_image)
 btnWrite = Button(root, text="Write Image", command=save_image)
 btnRead = Button(root, text="Read Image", command=read_image)
 btnRidgeOperators = Button(root, text="Ridge Operator(Filters)", command=ridge_operators)
-
-btnRidgeOperatorsSelectImg = Button(root, text='Ridge Operator(Filters-Select Image)', command= lambda: ridge_operators_select(read_image_return()))
-
+btnNiblack = Button(root, text="Niblack Threshold(1)", command= lambda: niblack_threshold(read_image_return()))
+btnRidgeOperatorsSelectImg = Button(root, text='Ridge Operator(3)(Filters-Select Image)', command= lambda: ridge_operators_select(read_image_return()))
+hysteresisThreshold = Button(root, text="Hysteresis Threshold(3)", command= lambda: hysteresis_threshold(read_image_return()))
+edgeOperators = Button(root, text="Edge Operators(2)", command=lambda: edge_operators(read_image_return()))
+multiOtsu=Button(root, text="Multi Otsu Threshold", command=lambda: multi_otsu(read_image_return()))
+#-----------------------------------------------------------------------------------------------------------------
+multiOtsu.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
+edgeOperators.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
+hysteresisThreshold.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
+btnNiblack.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
 btnRidgeOperators.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
 btnRidgeOperatorsSelectImg.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
 btn.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
@@ -33,19 +40,3 @@ btnRead.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
 btnWrite.pack(side="bottom",fill="both",expand="no",padx="0",pady="10")
 # kick off the GUI
 root.mainloop()
-
-""" path=select_image()
-
-img = cv.imread(path)
-cv.imshow('sa',img)
-
-cv.destroyAllWindows()
-a=0
-
-
-b="sa"
-
-b=b.capitalize()
-print(b)
- """
-""" ctrl """

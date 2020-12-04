@@ -38,7 +38,7 @@ def read_image_return():
 	path = filedialog.askopenfilename()
 	if len(path) > 0:
 		image = cv.imread(path)
-		print(image)
+		#print(image)
 		return image
 		
 		
