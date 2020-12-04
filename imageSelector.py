@@ -115,3 +115,4 @@ def select_image():
 			panelB.image = edged
 		return org_image
 	# initialize the window toolkit along with the two image panels
+

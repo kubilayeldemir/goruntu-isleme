@@ -1,6 +1,7 @@
 import cv2 as cv
+import numpy as np
 from matplotlib import pyplot as plt
-from skimage import data, io, filters,color
+from skimage import data, io, filters, color, exposure, img_as_float, img_as_ubyte
 from imageSelector import *
 
 
@@ -152,4 +153,41 @@ def multi_otsu(image):
 
 	plt.subplots_adjust()
 
+	plt.show()
+
+
+def histogram():
+	img=read_image_return()
+	hist, bins = np.histogram(img.flatten(), 256, [0, 256])
+	cdf = hist.cumsum()
+	cdf_normalized = cdf * hist.max() / cdf.max()
+
+	plt.plot(cdf_normalized, color='b')
+	plt.hist(img.flatten(), 256, [0, 256], color='r')
+	plt.xlim([0, 256])
+	plt.legend(('cdf', 'histogram'), loc='upper left')
+	plt.show()
+
+def histogramEquation():
+	#reference = data.coffee()
+	image=read_image_return()
+	reference=read_image_return()
+
+	#image = data.chelsea()
+
+	matched = exposure.match_histograms(image, reference, multichannel=True)
+
+	fig, (ax1, ax2, ax3) = plt.subplots(nrows=1, ncols=3, figsize=(8, 3),
+										sharex=True, sharey=True)
+	for aa in (ax1, ax2, ax3):
+		aa.set_axis_off()
+
+	ax1.imshow(image)
+	ax1.set_title('Source')
+	ax2.imshow(reference)
+	ax2.set_title('Reference')
+	ax3.imshow(matched)
+	ax3.set_title('Matched')
+
+	plt.tight_layout()
 	plt.show()

@@ -11,7 +11,7 @@ from imageFilters import *
 
 #show_image(read_image_meta(r"C:\Users\Kubilay\Desktop\gc\asd.png"))
 
-
+histogramEquation()
 global org_image
 root = Tk()
 
@@ -28,7 +28,9 @@ btnRidgeOperatorsSelectImg = Button(root, text='Ridge Operator(3)(Filters-Select
 hysteresisThreshold = Button(root, text="Hysteresis Threshold(3)", command= lambda: hysteresis_threshold(read_image_return()))
 edgeOperators = Button(root, text="Edge Operators(2)", command=lambda: edge_operators(read_image_return()))
 multiOtsu=Button(root, text="Multi Otsu Threshold", command=lambda: multi_otsu(read_image_return()))
+histogramBtn=Button(root, text="Histogram", command=lambda: histogram())
 #-----------------------------------------------------------------------------------------------------------------
+histogramBtn.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
 multiOtsu.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
 edgeOperators.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
 hysteresisThreshold.pack(side="bottom", fill="both", expand="no", padx="0", pady="10")
