@@ -7,11 +7,12 @@ from imageSelector import *
 from PIL import Image
 from PIL import ImageTk
 from imageFilters import *
+from transformImage import *
 #print(read_image_meta(r"C:\Users\Kubilay\Desktop\gc\asd.png"))
 
 #show_image(read_image_meta(r"C:\Users\Kubilay\Desktop\gc\asd.png"))
 
-histogramEquation()
+swirl()
 global org_image
 root = Tk()
 
