@@ -70,7 +70,7 @@ def swirl():
 
 
 
-def deneme():
+def generateElements():
     image = read_image_return_scikit()
     rows, cols = image.shape[0], image.shape[1]
 

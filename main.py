@@ -9,11 +9,15 @@ from PIL import ImageTk
 from imageFilters import *
 from transformImage import *
 from intensity import *
+from morphology import *
 #print(read_image_meta(r"C:\Users\Kubilay\Desktop\gc\asd.png"))
 
 #show_image(read_image_meta(r"C:\Users\Kubilay\Desktop\gc\asd.png"))
-
-rescale_intensity()
+#white_tophat()
+#black_tophat()
+#skeletonize()
+#convex_hull()
+#generateElements()
 global org_image
 root = Tk()
 
