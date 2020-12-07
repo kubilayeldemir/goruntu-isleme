@@ -4,6 +4,7 @@ from tkinter import filedialog
 from tkinter import *
 from PIL import Image
 from PIL import ImageTk
+from skimage import io
 panelA=None
 panelB=None
 global org_image
@@ -41,6 +42,14 @@ def read_image_return():
 		#print(image)
 		return image
 		
+
+def read_image_return_scikit():
+	path = filedialog.askopenfilename()
+	if len(path) > 0:
+		image = io.imread(path)
+		#print(image)
+		return image
+
 def read_image_path(path):
 	global org_image
 	global panelA

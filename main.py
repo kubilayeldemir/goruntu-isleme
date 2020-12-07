@@ -8,11 +8,12 @@ from PIL import Image
 from PIL import ImageTk
 from imageFilters import *
 from transformImage import *
+from intensity import *
 #print(read_image_meta(r"C:\Users\Kubilay\Desktop\gc\asd.png"))
 
 #show_image(read_image_meta(r"C:\Users\Kubilay\Desktop\gc\asd.png"))
 
-swirl()
+rescale_intensity()
 global org_image
 root = Tk()
 
