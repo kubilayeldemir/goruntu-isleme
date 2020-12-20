@@ -6,7 +6,7 @@ from imageSelector import *
 
 def area_closing():
     image = read_image_return_scikit()
-    closed = morphology.area_closing(image,area_threshold=30, connectivity=1)
+    closed = morphology.area_closing(image,area_threshold=1, connectivity=1)
     
     fig, (ax0, ax1) = plt.subplots(nrows=1, ncols=2, figsize=(8, 3),
                                    sharex=True, sharey=True)
@@ -68,8 +68,7 @@ def convex_hull():
     plt.show()
 
 
-def skeletonize():
-    cv.imshow(data.horse())
+def skeletonize():    
     image = util.invert(data.horse())  
     # perform skeletonization
     skeleton = morphology.skeletonize(image)
@@ -92,7 +91,7 @@ def skeletonize():
     plt.show()
 
 
-def deneme():
+def objects():
     from skimage.morphology import (square, rectangle, diamond, disk, cube,
                                     octahedron, ball, octagon, star)
     from mpl_toolkits.mplot3d import Axes3D
