@@ -59,6 +59,14 @@ def read_image_path(path):
 		return image
 
 
+def read_image_path_scikit(path):
+	global org_image	
+	if len(path) > 0:
+		image = io.imread(path)
+		org_image = cv.imread(path)
+		return image
+
+
 def save_image():
 	global org_image
 	global panelA
@@ -119,3 +127,9 @@ def select_image():
 		return org_image
 	# initialize the window toolkit along with the two image panels
 
+def setGlobalVar(image):
+	global org_image
+	org_image=image
+
+def getGlobalVar():
+	return org_image

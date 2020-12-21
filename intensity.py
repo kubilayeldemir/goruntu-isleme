@@ -11,12 +11,14 @@ def rescale_intensity():
     input_a = int(input())
     print("intensity in range 2.parameter")
     input_b = int(input())
+    '''
     print("intensity out range 1.parameter")
     input_c = int(input())
     print("intensity out range 2.parameter")
     input_d = int(input())
+    '''
     rescaled = exposure.rescale_intensity(
-        image, in_range=(input_a, input_b), out_range=(input_c, input_d))
+        image, in_range=(input_a, input_b))
     fig, (ax0, ax1) = plt.subplots(nrows=1, ncols=2, figsize=(8, 3),
                                    sharex=True, sharey=True)
 

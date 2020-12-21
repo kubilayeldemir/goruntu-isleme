@@ -1,14 +1,15 @@
 import cv2 as cv
 import numpy as np
 from matplotlib import pyplot as plt
-from skimage import data, io, filters, color, exposure, img_as_float, img_as_ubyte
+from skimage import data, io, filters, color, exposure, img_as_float, img_as_ubyte,morphology
 from imageSelector import *
 
 
 def niblack_threshold(image):
 	gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
 	#show_image(gray)
-	threshold_image = filters.threshold_niblack(gray, window_size=7, k=0.1)	
+	threshold_image = filters.threshold_niblack(gray, window_size=5, k=1)
+	setGlobalVar(threshold_image)
 	show_image(threshold_image)
 
 
@@ -170,8 +171,8 @@ def histogram():
 
 def histogramEquation():
 	#reference = data.coffee()
-	image=read_image_return()
-	reference=read_image_return()
+	image = read_image_return_scikit()
+	reference = read_image_return_scikit()
 
 	#image = data.chelsea()
 
@@ -191,3 +192,41 @@ def histogramEquation():
 
 	plt.tight_layout()
 	plt.show()
+
+def instagram():
+	source = "pics/gokkusagi.jpg"
+	refimg = read_image_path_scikit(source)
+	image=read_image_return_scikit()
+
+	matched = exposure.match_histograms(image, refimg, multichannel=True)
+	
+	# Plotting the original image.
+	io.imshow(matched)
+	plt.show()
+
+
+def insta():
+	imgray=read_image_return()
+	imgray2 = cv.GaussianBlur(imgray, (5, 5), 0)
+	#imgray = cv.Canny(imgray2, 30, 200)	
+
+	realGray = cv.cvtColor(imgray2, cv.COLOR_BGR2GRAY)
+	
+
+	ret, thresh = cv.threshold(realGray, 127, 255, 0)
+	contours, hierarchy = cv.findContours(
+		thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+	print("Number of contours = " + str(len(contours)))
+	length = len(contours)
+	for i in range(length):
+		randomNumber1 = np.random.randint(255)
+		randomNumber2 = np.random.randint(255)
+		randomNumber3 = np.random.randint(255)
+		cv.drawContours(imgray, contours, i, (randomNumber1, randomNumber2, randomNumber3), 3)
+	#cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
+	#cv.drawContours(imgray, contours, -1, (255, 0, 0), 3)
+	setGlobalVar(imgray)
+	cv.imshow('Image', imgray)
+	#cv2.imshow('Image GRAY', imgray)
+	cv.waitKey(0)
+	cv.destroyAllWindows()
