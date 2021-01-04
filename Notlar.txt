@@ -1,0 +1,8 @@
+Program main.py den başlatılmaktadır.
+Raporda kullanılan fotoğraflar pics klasöründedir fakat onları kullanmak zorunda değilsiniz.
+IDE olarak vs code kullanılmıştır.
+Gerekli requirementslar requirements.txt de bulunmaktadır.
+
+pip install -r requirements.txt
+
+iletişim: kubilayeldemir@hotmail.com

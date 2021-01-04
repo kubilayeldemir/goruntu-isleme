@@ -193,17 +193,6 @@ def histogramEquation():
 	plt.tight_layout()
 	plt.show()
 
-def instagram():
-	source = "pics/gokkusagi.jpg"
-	refimg = read_image_path_scikit(source)
-	image=read_image_return_scikit()
-
-	matched = exposure.match_histograms(image, refimg, multichannel=True)
-	
-	# Plotting the original image.
-	io.imshow(matched)
-	plt.show()
-
 
 def insta():
 	imgray=read_image_return()
