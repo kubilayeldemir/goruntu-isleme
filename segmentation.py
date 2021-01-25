@@ -35,7 +35,7 @@ def cv_active_cont():
     imgray = cv2.GaussianBlur(imgray, (5, 5), 0)
     imgray = cv2.Canny(imgray, 30, 200)
 
-    cv2.imshow('Image', imgray)
+    #cv2.imshow('Image', imgray)
     ret, thresh = cv2.threshold(imgray, 127, 255, 0)
     contours, hierarchy = cv2.findContours(
         thresh, cv2.RETR_FLOODFILL, cv2.CHAIN_APPROX_SIMPLE)
@@ -43,9 +43,9 @@ def cv_active_cont():
     print(contours[0])
 
     cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
-    cv2.drawContours(imgray, contours, -1, (153, 38, 0), 3)
+    #cv2.drawContours(imgray, contours, -1, (153, 38, 0), 3)
     setGlobalVar(imgray)
-    cv2.imshow('Image', imgray)
+    cv2.imshow('Image', img)
     #cv2.imshow('Image GRAY', imgray)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
